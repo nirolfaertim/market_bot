@@ -8,8 +8,9 @@ import urllib2
 import config
 
 cj = CookieJar()
-headers = {'User-agent': "Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11"}
-opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+cookie_processor = urllib2.HTTPCookieProcessor(cj)
+opener = urllib2.build_opener(cookie_processor)
+opener.addheaders = [('User-agent', "Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11")]
 
 BASE = "http://forum.toribash.com/"
 
